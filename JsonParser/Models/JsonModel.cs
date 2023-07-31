@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JsonParser.Models
 {
- 
+
     public class BoundingPoly
     {
         public List<Vertex> vertices { get; set; }
@@ -25,4 +25,8 @@ namespace JsonParser.Models
         public int y { get; set; }
     }
 
+    public class OutputModel
+    {
+        public String[] strlist { get; set; }
+    }
 }

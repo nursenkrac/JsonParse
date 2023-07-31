@@ -1,0 +1,38 @@
+﻿@model OutputModel
+@{
+    ViewData["Title"] = "Json Parse";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+
+<!-- Multi step form -->
+<section class="multi_step_form">
+    <div id="msformdosyayukle">
+
+        <fieldset id="page02" style="color:black">
+            @if (Model.strlist.Length !=0)
+            {
+            <table>
+                <tr>
+                    <th>Değer</th>
+                    <th>Sıra</th>
+
+                </tr>
+               
+                @for (var i = 0; i < Model.strlist.Length; i++)
+                {
+                    <tr>
+                        <td>@i</td>
+                        <td>@Model.strlist[i]</td>
+                    </tr>
+                }
+            </table>
+            }
+
+        </fieldset>
+
+    </div>
+</section>
+<!-- End Multi step form -->
+

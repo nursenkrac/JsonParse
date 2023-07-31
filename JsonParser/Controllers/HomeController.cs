@@ -25,69 +25,17 @@ namespace JsonParser.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-        public IActionResult SaveCustomer()
-        {
-            return View();
-
-        }
-        public IActionResult SearchById()
-        {
-            return View();
-
-        }
         public IActionResult JsonParse()
         {
             ServiceOperation ou = new ServiceOperation();
-            ou.GetById();
-            return View();
-
+            OutputModel o = new OutputModel();
+            String[] strlist = ou.JsonParse();
+            o.strlist = strlist;
+            ViewBag.Deger = strlist;
+            return View(o);
         }
 
-        //[HttpPost]
-        //public async Task<IActionResult> SearchById(GetCustomer model)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-
-        //        ServiceOperation ou = new ServiceOperation();
-        //        GetByIdOutputModel m = new GetByIdOutputModel();
-        //        try
-        //        {
-        //            m = ou.GetById(model);
-        //            if (m != null)
-        //            {
-        //                if (m.isSuccess == true)
-        //                {
-        //                    ViewBag.StepSS = "yes";
-        //                    return View(m);
-        //                }
-
-        //                else
-        //                {
-
-        //                    ModelState.AddModelError("", m.message.ToString());
-        //                    return View(model);
-
-        //                }
-        //            }
-        //        }
-        //        catch (Exception)
-        //        {
-
-        //            ModelState.AddModelError("", "Hata Oluştu");
-        //            return View(model);
-
-        //        }
-
-
-        //    }
-        //    ModelState.AddModelError("", "Hata Oluştu");
-        //    return View(model);
-        //}
+      
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

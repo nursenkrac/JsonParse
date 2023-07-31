@@ -1,28 +1,25 @@
 ﻿using JsonParser.Models;
-using JsonParser.Models.ViewModels.Outputs;
 using Newtonsoft.Json;
-using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Text.Json;
+
 
 namespace JsonParser.Operations
 {
     public class ServiceOperation
     {
        
-        public JsonModel GetById()
+        public String[] JsonParse()
         {
             JsonModel ou = new JsonModel();
+            String[] strlist;
             try
             {
                 string jsonData = File.ReadAllText("response.json");
-                ou = JsonConvert.DeserializeObject<JsonModel>(jsonData);
-                //string j = JsonSerializer.Deserialize<JsonModel>(jsonData);
-                ou = System.Text.Json.JsonSerializer.Deserialize<JsonModel>(jsonData);
+                List<JsonModel> myDeserialized = JsonConvert.DeserializeObject<List<JsonModel>>(jsonData);
+                char[] spearator = { '\n'};
+                strlist = myDeserialized[0].description.Split(spearator);
             }
             catch (Exception ex)
             {
@@ -30,8 +27,7 @@ namespace JsonParser.Operations
                 throw;
             }
 
-
-            return ou;
+            return strlist;
         }
     }
 }
